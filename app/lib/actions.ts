@@ -4,11 +4,11 @@ import { sql } from '@vercel/postgres'; // 这里需要注意
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
-
+// 标记 Form 参数检查规则
 const FormSchema = z.object({
     id: z.string(),
     customerId: z.string({
-        invalid_type_error: 'Please select a customer.',
+        invalid_type_error: 'Please select a customer!',
     }),
     amount: z.coerce
         .number()
@@ -19,8 +19,10 @@ const FormSchema = z.object({
     date: z.string(),
 });
 
+// 忽略参数
 const CreateInvoice = FormSchema.omit({ id: true, date: true });
 
+// This is temporary until @types/react-dom is updated
 export type State = {
     errors?: {
         customerId?: string[];
