@@ -19,6 +19,8 @@ async function getUser(email: string): Promise<User | undefined> {
 export const { auth, signIn, signOut } = NextAuth({
     ...authConfig,
     providers: [
+        // 验证用户登录
+        // 可以提供多种验证方式 https://authjs.dev/getting-started/providers/credentials
         Credentials({
             async authorize(credentials) {
                 const parsedCredentials = z

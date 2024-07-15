@@ -63,6 +63,7 @@ export default function LoginForm() {
             </div>
           </div>
         </div>
+        {/* 点击登录后服务器响应期间 disabled 登录 button*/}
         <Button className="mt-4 w-full" aria-disabled={isPending}>
           Log in <ArrowRightIcon className="ml-auto h-5 w-5 text-gray-50" />
         </Button>
