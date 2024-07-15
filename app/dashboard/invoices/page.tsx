@@ -1,24 +1,29 @@
-import Pagination from "@/app/ui/invoices/pagination";
-import Search from "@/app/ui/search";
-import Table from "@/app/ui/invoices/table";
-import { CreateInvoice } from "@/app/ui/invoices/buttons";
-import { lusitana } from "@/app/ui/fonts";
-import { InvoicesTableSkeleton } from "@/app/ui/skeletons";
-import { Suspense } from "react";
-import { fetchInvoicesPages } from "@/app/lib/data";
+import Pagination from '@/app/ui/invoices/pagination'
+import Search from '@/app/ui/search'
+import Table from '@/app/ui/invoices/table'
+import { CreateInvoice } from '@/app/ui/invoices/buttons'
+import { lusitana } from '@/app/ui/fonts'
+import { InvoicesTableSkeleton } from '@/app/ui/skeletons'
+import { Suspense } from 'react'
+import { fetchInvoicesPages } from '@/app/lib/data'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Invoices'
+}
 
 export default async function Page({
-  searchParams,
+  searchParams
 }: {
   searchParams?: {
-    query?: string;
-    page?: string;
-  };
+    query?: string
+    page?: string
+  }
 }) {
-  const query = searchParams?.query || "";
-  const currentPage = Number(searchParams?.page) || 1;
+  const query = searchParams?.query || ''
+  const currentPage = Number(searchParams?.page) || 1
   // 查询数据
-  const totalPages = await fetchInvoicesPages(query);
+  const totalPages = await fetchInvoicesPages(query)
 
   return (
     <div className="w-full">
@@ -36,5 +41,5 @@ export default async function Page({
         <Pagination totalPages={totalPages} />
       </div>
     </div>
-  );
+  )
 }
