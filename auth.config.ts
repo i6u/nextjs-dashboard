@@ -2,6 +2,7 @@ import type { NextAuthConfig } from 'next-auth';
 
 // next auth 配置
 export const authConfig = {
+    trustHost: true,
     // pages 选项指定自定义登录、退出登录和错误页面的路由
     // 这不是必需的，但通过将 signIn: '/login' 添加到我们的 pages 选项中，用户将被重定向到我们的自定义登录页面，而不是 NextAuth.js 默认页面
     pages: {
